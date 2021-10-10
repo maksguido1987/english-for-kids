@@ -1,0 +1,22 @@
+.footer {
+  width: 100%;
+  max-width: 1470px;
+  padding: 20px 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  font-family: 'Oswald';
+}
+.footer-logo {
+  width: 120px;
+}
+.footer-link {
+  font-size: 21px;
+  text-decoration: underline;
+  color: #000;
+}
+.github-link {
+  text-decoration: underline;
+  color: #000;
+}

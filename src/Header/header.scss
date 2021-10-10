@@ -1,0 +1,324 @@
+$mainColor: #ff512f;
+$grey: #9c9c9c;
+$secondaryColor: #38ef7d;
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 85px;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 40px 20px 5px 20px;
+  font-family: 'Oswald';
+  @media (max-width: 1380px) {
+    max-width: 1000px;
+  }
+  @media (max-width: 1070px) {
+    max-width: 650px;
+  }
+  @media (max-width: 750px) {
+    max-width: 320px;
+  }
+}
+.menu-header {
+  display: block;
+  position: relative;
+  width: 35px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 200;
+  span {
+    transition: all ease 0.4s;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    border-radius: 20px;
+    background-color: $mainColor;
+    top: calc(50% - 1px);
+    left: 0;
+    &:first-child {
+      top: 1px;
+    }
+    &:last-child {
+      top: auto;
+      bottom: 0px;
+    }
+  }
+  &.play {
+    span {
+      background-color: $secondaryColor;
+    }
+  }
+  &.active {
+    span {
+      transform: scale(0);
+      &:last-child {
+        transform: rotate(-45deg);
+        bottom: calc(50% - 1px);
+      }
+      &:first-child {
+        transform: rotate(45deg);
+        top: calc(50% - 1px);
+      }
+    }
+  }
+}
+.train-or-play {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  input {
+    transition: 0.25s -0.1s;
+    box-shadow: 0px 0px 2px 2px rgb(255, 255, 255) inset;
+    &:checked {
+      background-color: $secondaryColor;
+      &:before {
+        color: $secondaryColor;
+        transition: color 0.5s 0.2s;
+      }
+      &:after {
+        color: $grey;
+        transition: color 0.5s;
+      }
+      & + label {
+        left: 10px;
+        right: 100px;
+
+        background: $mainColor;
+
+        transition: left 0.5s, right 0.4s 0.2s;
+      }
+    }
+    &:not(:checked) {
+      background: $mainColor;
+      transition: background 0.5s -0.1s;
+      &:before {
+        color: $grey;
+        transition: color 0.5s;
+      }
+      &:after {
+        color: $mainColor;
+        transition: color 0.5s 0.2s;
+      }
+      & + label {
+        left: 100px;
+        right: 10px;
+
+        background: $secondaryColor;
+
+        transition: left 0.4s 0.2s, right 0.5s, background 0.35s -0.1s;
+      }
+    }
+  }
+}
+
+.label-header {
+  z-index: 1;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px 2px rgb(235, 235, 235) inset;
+}
+.pass-descript {
+  color: red;
+  font-size: 8px;
+  margin: -8px 0 3px 0;
+  text-align: center;
+}
+.checkbox-header {
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+
+  background-color: $mainColor;
+  outline: none;
+
+  &:before,
+  &:after {
+    z-index: 2;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: $secondaryColor;
+  }
+  &:before {
+    content: 'Train';
+    font-size: 21px;
+    bottom: -9px;
+    left: 20px;
+    font-weight: 900;
+  }
+  &:after {
+    content: 'Play';
+    font-size: 21px;
+    bottom: -8px;
+    right: 20px;
+    font-weight: 900;
+  }
+}
+.exit-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 125px 50px 50px;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 380px;
+  height: calc(100vh + 200px);
+  background: linear-gradient(180deg, #11998e, #38ef7d);
+  transition: all 0.5s ease-out;
+  &.play {
+    background: linear-gradient(180deg, #ff512f, #f09819);
+  }
+  &.active-exit-menu {
+    left: calc(675px - 50vw);
+    @media (max-width: 1380px) {
+      left: calc(500px - 50vw);
+    }
+    @media (max-width: 1070px) {
+      left: calc(325px - 50vw);
+    }
+    @media (max-width: 750px) {
+      left: calc(150px - 50vw);
+    }
+  }
+  z-index: 100;
+  @media (max-width: 1380px) {
+    max-width: 320px;
+  }
+  @media (max-width: 750px) {
+    left: -200%;
+  }
+}
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+.menu-link {
+  padding: 10px 0;
+  font-size: 22px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  &.active-link {
+    text-decoration: underline;
+  }
+  &:last-child {
+    margin: 0 0 50px 0;
+  }
+}
+.btn-container {
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.register-btn,
+.login-btn {
+  flex: 0 0 40%;
+  padding: 2px 5px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  border-radius: 3px;
+  font-weight: 900;
+  transition: all 0.5s ease;
+  &:hover {
+    box-shadow:1px 1px 4px 0px rgba(0,0,0,0.5);
+  }
+}
+.register-popup,
+.login-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 210;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.register-form,
+.login-form {
+  padding: 30px;
+  flex: 0 1 30vw;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow:1px 1px 4px 0px rgba(0,0,0,0.5);
+}
+.register-name,
+.password-register,
+.login-name,
+.password-login {
+  padding: 5px 10px;
+  margin: 0 0 10px 0;
+  background-color: #ccc;
+  border-radius: 3px;
+  &:focus {
+    border: 1px solid rgb(129, 129, 129);
+  }
+}
+.error-message {
+  width: 100%;
+  display: block;
+  padding: 0 0 10px 0;
+  color: red;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  &.error-message-active {
+    opacity: 1;
+    overflow: visible;
+    visibility: visible;
+  }
+}
+.register-name {
+  &.valid {
+    border: 1px solid green;
+  }
+  &.invalid {
+    border: 1px solid hotpink;
+  }
+}
+.password-register {
+  &.valid {
+    border: 1px solid green;
+  }
+  &.invalid {
+    border: 1px solid hotpink;
+  }
+}
+.reg-form-button,
+.log-form-button {
+  width: 100%;
+  max-width: 150px;
+  padding: 8px 20px;
+  border-radius: 3px;
+  margin: 0 auto;
+  font-size: 18px;
+  background: linear-gradient(180deg, #11998e, #38ef7d);
+  &:hover {
+    box-shadow:1px 1px 4px 0px rgba(0,0,0,0.5);
+  }
+}
